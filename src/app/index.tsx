@@ -8,43 +8,47 @@ export default function Index() {
   const dec = () => {
     setCount(count - 1);
   };
+
   const reset = () => {
     setCount(0);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 45, textAlign: "center", marginBottom: 10 }}>
-        Count: {count}
-      </Text>
+      <View style={styles.counterCard}>
+        <Text style={styles.counterTitle}>Counter Display</Text>
+        <Text style={styles.counterValue}>{count}</Text>
+      </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setCount(count + 1)}
-      >
-        <Text style={styles.button_label}>+</Text>
+      <View style={styles.actionRow}>
+        <TouchableOpacity
+          style={styles.countBtn}
+          onPress={() => setCount(count + 1)}
+        >
+          <Text style={styles.btnText}>+</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.countBtn} onPress={dec}>
+          <Text style={styles.btnText}>-</Text>
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={styles.resetBtn} onPress={reset}>
+        <Text style={styles.resetBtnText}>Reset Counter</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setCount(count - 1)}
-      >
-        <Text style={styles.button_label}>-</Text>
-      </TouchableOpacity>
+      <View style={styles.menuContainer}>
+        <Text style={styles.menuTitle}>Navigation Menu</Text>
 
-      <TouchableOpacity style={styles.button} onPress={reset}>
-        <Text style={styles.button_label}>Reset</Text>
-      </TouchableOpacity>
-
-      <View style={styles.linkContainer}>
         <Link href="/arith" asChild>
           <TouchableOpacity style={styles.linkButton}>
-            <Text style={styles.linkText}>Go to Calculator</Text>
+            <Text style={styles.linkText}>1. Arith Calculator </Text>
           </TouchableOpacity>
         </Link>
+
         <Link href="/form" asChild>
-          <TouchableOpacity style={styles.linkButtonBlue}>
-            <Text style={styles.linkText}>Go to Form</Text>
+          <TouchableOpacity style={styles.linkButton}>
+            <Text style={styles.linkText}>2. CED_Form Registration </Text>
           </TouchableOpacity>
         </Link>
       </View>
@@ -56,47 +60,81 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingHorizontal: 20,
-    backgroundColor: "#f5f5f5",
-    padding: 10,
+    paddingHorizontal: 24,
+    backgroundColor: "#020617",
   },
-  display: {
-    backgroundColor: "#03c672",
-    color: "white",
-    fontSize: 32,
-    padding: 20,
+  counterCard: {
+    backgroundColor: "#0F172A",
+    borderColor: "#1E293B",
+    borderWidth: 1,
+    borderRadius: 16,
+    padding: 24,
+    alignItems: "center",
+    marginBottom: 20,
   },
-  button: {
-    backgroundColor: "#007AFF",
-    padding: 12,
-    borderRadius: 8,
-    margin: 10,
+  counterTitle: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#38BDF8",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
-  button_label: {
-    color: "white",
+  counterValue: {
+    fontSize: 56,
     fontWeight: "bold",
-    fontSize: 32,
-    textAlign: "center",
+    color: "#F8FAFC",
+    marginTop: 4,
   },
-  linkContainer: {
-    marginTop: 20,
-    paddingHorizontal: 10,
+  actionRow: {
+    flexDirection: "row",
+    gap: 12,
+    marginBottom: 12,
+  },
+  countBtn: {
+    flex: 1,
+    backgroundColor: "#38BDF8",
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  btnText: {
+    color: "#020617",
+    fontWeight: "bold",
+    fontSize: 24,
+  },
+  resetBtn: {
+    backgroundColor: "#EF4444",
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+    marginBottom: 32,
+  },
+  resetBtnText: {
+    color: "#F8FAFC",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  menuContainer: {
+    gap: 12,
+  },
+  menuTitle: {
+    color: "#94A3B8",
+    fontSize: 13,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    marginBottom: 4,
   },
   linkButton: {
-    backgroundColor: "#222",
-    padding: 14,
-    borderRadius: 8,
-  },
-  linkButtonBlue: {
-    backgroundColor: "#007AFF",
-    padding: 14,
-    borderRadius: 8,
-    marginTop: 10,
+    backgroundColor: "#0F172A",
+    borderColor: "#38BDF8",
+    borderWidth: 1,
+    padding: 16,
+    borderRadius: 12,
   },
   linkText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "bold",
+    color: "#38BDF8",
+    fontSize: 16,
+    fontWeight: "700",
   },
 });
